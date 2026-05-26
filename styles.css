@@ -1665,11 +1665,15 @@ h1 {
   }
 
   .site-header {
+    grid-template-columns: minmax(0, 1fr) auto;
+    column-gap: 12px;
+    row-gap: 14px;
     padding-top: 22px;
     padding-bottom: 22px;
   }
 
   .brand {
+    min-width: 0;
     font-size: 15px;
   }
 
@@ -1679,14 +1683,25 @@ h1 {
   }
 
   .primary-nav {
-    gap: 18px;
+    grid-column: 1 / -1;
+    gap: 14px;
     width: 100%;
-    padding-bottom: 4px;
+    padding-bottom: 2px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .primary-nav::-webkit-scrollbar {
+    display: none;
   }
 
   .header-actions {
-    width: 100%;
-    justify-content: space-between;
+    width: auto;
+    justify-self: end;
+    grid-column: 2;
+    gap: 10px;
   }
 
   .text-button {
@@ -1694,7 +1709,8 @@ h1 {
   }
 
   .cart-button {
-    margin-left: auto;
+    margin-left: 0;
+    padding: 9px 11px;
   }
 
   .stripe-stack {
