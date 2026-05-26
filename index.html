@@ -1,0 +1,376 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cloud Counter Vape Store</title>
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='black'/%3E%3Cpath d='M32 12v40M12 32h40' stroke='white' stroke-width='8' stroke-linecap='round'/%3E%3C/svg%3E" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@500;600;700;800;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="age-bar">Adults 21+ only. Nicotine products are addictive.</div>
+
+    <main class="page-shell">
+      <section class="stripe-stack" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </section>
+
+      <header class="site-header" id="top">
+        <a class="brand" href="#top" aria-label="Cloud Counter home">
+          <img class="brand-logo" src="image.png" alt="Cloud Counter logo" />
+          <span>cloud counter</span>
+        </a>
+
+        <nav class="primary-nav" aria-label="Primary navigation">
+          <a class="active" href="#shop">Shop</a>
+          <a href="#drops">Drops</a>
+          <a href="#collections">Collections</a>
+          <a href="#catalog">Catalog</a>
+          <a href="#support">Support</a>
+        </nav>
+
+        <div class="header-actions">
+          <button class="text-button" type="button" data-open-account>My account</button>
+          <button class="cart-button" type="button" data-open-cart aria-label="Open cart">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7.5h11l1 12h-13l1-12Z"/><path d="M9 9V6.8a3 3 0 0 1 6 0V9"/></svg>
+            <span>Cart</span>
+            <strong data-cart-count>0</strong>
+          </button>
+        </div>
+      </header>
+
+      <section class="hero" id="shop">
+        <div class="hero-copy">
+          <p class="eyebrow">New counter rotation</p>
+          <h1>Get Inspired</h1>
+          <p class="intro">A polished storefront for Elfbar EW9000, Elfbar EW18000, and Nasty Bar 9K. Browse bold flavours, compare puff counts, and build your cart without leaving the catalog.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#catalog">Shop catalog</a>
+            <a class="secondary-button" href="#drops">View drops</a>
+          </div>
+          <dl class="hero-metrics" aria-label="Store highlights">
+            <div><dt>Delivery</dt><dd>Same-day prep</dd></div>
+            <div><dt>Range</dt><dd>Elfbar + Nasty</dd></div>
+            <div><dt>Orders</dt><dd>Easy re-stocks</dd></div>
+          </dl>
+        </div>
+
+        <div class="hero-stage" aria-label="Featured vape products">
+          <div class="orbit-ring" aria-hidden="true"></div>
+          <img class="hero-product hero-product-one" src="Vape Images/CALIFORNIA-CHERRY-ELFBAR9K.webp" alt="Elfbar EW9000 California Cherry vape" />
+          <div class="hero-device-card hero-product-two" aria-hidden="true">
+            <span>Nasty Bar 9K</span>
+            <strong>Berry Grape</strong>
+            <small>Disposable / 9K puffs</small>
+          </div>
+          <div class="hero-device-card hero-product-three" aria-hidden="true">
+            <span>Elfbar EW18000</span>
+            <strong>Pod ready</strong>
+            <small>Replacement pod / 18K</small>
+          </div>
+          <div class="hero-stat">
+            <span>Featured</span>
+            <strong>20 flavours</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="editorial-strip" aria-label="Shopping reassurance">
+        <article>
+          <span>01</span>
+          <strong>Authentic stock</strong>
+          <p>Curated devices from recognisable retail lines, presented with clear puff counts and pricing.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <strong>Built for repeat buys</strong>
+          <p>Fast filtering, search, and saved cart state make top-up orders feel immediate.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <strong>Adult-first retail</strong>
+          <p>Prominent nicotine warnings, direct age messaging, and uncluttered product information.</p>
+        </article>
+      </section>
+
+      <section class="marquee" aria-label="Store highlights">
+        <div>
+          <span>Rechargeable disposables</span>
+          <span>Mesh coil favourites</span>
+          <span>Same-day local prep</span>
+          <span>New flavour drops weekly</span>
+          <span>Rechargeable disposables</span>
+          <span>Mesh coil favourites</span>
+          <span>Same-day local prep</span>
+          <span>New flavour drops weekly</span>
+        </div>
+      </section>
+
+      <section class="collections" id="collections">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Shop by mood</p>
+            <h2>Collections</h2>
+          </div>
+          <p class="section-copy">Quick routes into the wall for buyers who already know the vibe they want.</p>
+        </div>
+        <div class="collection-grid">
+          <a class="collection-card sharp" href="#catalog">
+            <span>High puff</span>
+            <strong>EW18000 Pods</strong>
+            <p>Longer sessions, compact replacements, clean flavour profiles.</p>
+          </a>
+          <a class="collection-card bright" href="#catalog">
+            <span>Starter kit</span>
+            <strong>EW9000 Kits</strong>
+            <p>Magnetic kit format, pocket-friendly device body, 9K output.</p>
+          </a>
+          <a class="collection-card dark-card" href="#catalog">
+            <span>Disposable</span>
+            <strong>Nasty Bar 9K</strong>
+            <p>Bold fruit blends with a small format and quick-grab pricing.</p>
+          </a>
+        </div>
+      </section>
+
+      <section class="drops" id="drops">
+        <div class="section-heading">
+          <p class="eyebrow">Fresh arrivals</p>
+          <h2>Counter Picks</h2>
+        </div>
+        <div class="drop-grid">
+          <article class="drop-card tall">
+            <img src="Vape Images/CALIFORNIA-CHERRY-ELFBAR9K.webp" alt="Elfbar EW9000 California Cherry vape" />
+            <div>
+              <span>Elfbar EW9000</span>
+              <strong>California Cherry</strong>
+            </div>
+          </article>
+          <article class="drop-card">
+            <img src="https://smokeorganic.co.za/cdn/shop/files/Tropical_cherry_flavour_Nasty_Bar_9k_Disposable_vape.jpg?v=1766139119" alt="Nasty Bar 9K Tropical Cherry vape" />
+            <div>
+              <span>Nasty Bar 9K</span>
+              <strong>Tropical Cherry</strong>
+            </div>
+          </article>
+          <article class="drop-card soft">
+            <img src="Vape Images/STRAWBERRY-ICE-18K.webp" alt="Elfbar EW18000 Strawberry Ice pod" />
+            <div>
+              <span>Elfbar EW18000</span>
+              <strong>Strawberry Ice</strong>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="feature-story">
+        <div class="feature-copy">
+          <p class="eyebrow">Built like a counter</p>
+          <h2>Fast browsing, serious product focus.</h2>
+          <p>Start with the newest drops, jump into the flavour lane that fits your mood, scan price and puff count, add to cart, and keep moving.</p>
+          <div class="feature-list">
+            <span>Fresh drops</span>
+            <span>Fruit-forward blends</span>
+            <span>Compact devices</span>
+          </div>
+        </div>
+        <div class="feature-product">
+          <img src="https://smokeorganic.co.za/cdn/shop/files/Red_energy_flavour_Nasty_Bar_9k_Disposable_vape.jpg?v=1766139119" alt="Nasty Bar 9K Red Energy vape" />
+          <div>
+            <span>Staff pick</span>
+            <strong>Nasty Bar 9K / Red Energy</strong>
+          </div>
+        </div>
+      </section>
+
+      <section class="catalog" id="catalog">
+        <div class="section-heading catalog-heading">
+          <div>
+            <p class="eyebrow">Shop the wall</p>
+            <h2>Catalog</h2>
+            <p class="result-count" data-result-count>Showing all products</p>
+          </div>
+          <label class="search-box">
+            <span>Search</span>
+            <input type="search" placeholder="Find flavour or brand" data-search />
+          </label>
+        </div>
+
+        <div class="filters" aria-label="Product filters">
+          <button class="filter-pill active" type="button" data-filter="all"><span><small>Brand</small> All Brands</span></button>
+          <button class="filter-pill" type="button" data-filter="Nasty"><span><small>Brand</small> Nasty</span></button>
+          <button class="filter-pill" type="button" data-filter="Elfbar"><span><small>Brand</small> Elfbar EW</span></button>
+          <label class="sort-pill">
+            <span><small>Sort</small></span>
+            <select data-sort aria-label="Sort products">
+              <option value="new">New In</option>
+              <option value="price-low">Price Low</option>
+              <option value="price-high">Price High</option>
+            </select>
+          </label>
+        </div>
+
+        <div class="product-grid" data-products></div>
+      </section>
+
+      <section class="flavour-guide">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">Flavour guide</p>
+            <h2>Pick Your Lane</h2>
+          </div>
+        </div>
+        <div class="flavour-grid">
+          <article><span class="dot red"></span><strong>Cherry</strong><p>Bright, sharp, and punchy.</p></article>
+          <article><span class="dot purple"></span><strong>Berry grape</strong><p>Dense fruit with a darker finish.</p></article>
+          <article><span class="dot lime"></span><strong>Sour lush</strong><p>Tangy, cold, and sweet-edged.</p></article>
+          <article><span class="dot pale"></span><strong>Ice profiles</strong><p>Cleaner inhale with a chilled close.</p></article>
+        </div>
+      </section>
+
+      <section class="service-band" id="support">
+        <article>
+          <span>01</span>
+          <h3>Verified adult checkout</h3>
+          <p>Built for age-gated nicotine retail with clear product and legal messaging.</p>
+        </article>
+        <article>
+          <span>02</span>
+          <h3>Fast local fulfilment</h3>
+          <p>Clear totals, delivery estimates, and a simple checkout flow for quick repeat orders.</p>
+        </article>
+        <article>
+          <span>03</span>
+          <h3>Brand-led catalog</h3>
+          <p>Filter and search through Nasty Bar 9K and Elfbar EW devices without a page reload.</p>
+        </article>
+      </section>
+
+      <section class="reviews-band" aria-label="Customer notes">
+        <div>
+          <p class="eyebrow">Counter notes</p>
+          <h2>Made for quick decisions.</h2>
+        </div>
+        <article>
+          <p>“The product wall is easy to scan, the cart is immediate, and the design feels more like a real store than a catalog dump.”</p>
+          <strong>Storefront review</strong>
+        </article>
+      </section>
+
+      <section class="faq-news">
+        <div class="faq">
+          <p class="eyebrow">FAQ</p>
+          <details open>
+            <summary>Do prices include delivery?</summary>
+            <p>Delivery is shown separately in the cart, so the product price stays clear while you shop.</p>
+          </details>
+          <details>
+            <summary>Can the cart connect to payments?</summary>
+            <p>Yes. The checkout button is placed where customers expect it, ready for card or EFT payment setup.</p>
+          </details>
+          <details>
+            <summary>Is this age-gated?</summary>
+            <p>The site is written for adult nicotine retail. A live store should verify age before checkout.</p>
+          </details>
+        </div>
+        <form class="newsletter">
+          <p class="eyebrow">Drop alerts</p>
+          <h2>Get the next restock first.</h2>
+          <label>
+            <span>Email address</span>
+            <input type="email" placeholder="you@example.com" />
+          </label>
+          <button class="primary-button" type="submit">Join list</button>
+        </form>
+      </section>
+
+      <footer class="site-footer">
+        <div>
+          <img class="footer-logo" src="image.png" alt="Cloud Counter logo" />
+          <strong>cloud counter</strong>
+          <p>Nicotine products are addictive and intended only for adult users. Verify local laws before purchase.</p>
+        </div>
+        <nav aria-label="Footer navigation">
+          <a href="#drops">Drops</a>
+          <a href="#collections">Collections</a>
+          <a href="#catalog">Catalog</a>
+          <a href="#top">Back to top</a>
+        </nav>
+      </footer>
+    </main>
+
+    <aside class="cart-drawer" data-cart-drawer aria-hidden="true">
+      <div class="cart-panel" role="dialog" aria-modal="true" aria-label="Shopping cart">
+        <header>
+          <div>
+            <span>Cart</span>
+            <strong data-cart-title>0 items</strong>
+          </div>
+          <button class="icon-close" type="button" data-close-cart aria-label="Close cart">x</button>
+        </header>
+        <div class="cart-items" data-cart-items></div>
+        <footer>
+          <div class="summary-row"><span>Subtotal</span><strong data-subtotal>R0.00</strong></div>
+          <div class="summary-row"><span>Estimated delivery</span><strong>R60.00</strong></div>
+          <div class="summary-row total"><span>Total</span><strong data-total>R0.00</strong></div>
+          <button class="checkout-button" type="button" data-open-checkout>Checkout</button>
+          <p>Delivery estimate shown before checkout.</p>
+        </footer>
+      </div>
+    </aside>
+
+    <aside class="checkout-modal" data-checkout-modal aria-hidden="true">
+      <div class="checkout-panel" role="dialog" aria-modal="true" aria-label="Checkout">
+        <header>
+          <div>
+            <span>Secure checkout</span>
+            <strong>Complete your order</strong>
+          </div>
+          <button class="icon-close" type="button" data-close-checkout aria-label="Close checkout">x</button>
+        </header>
+        <form class="checkout-form" data-checkout-form>
+          <section>
+            <h3>Contact</h3>
+            <label><span>Email</span><input required type="email" placeholder="you@example.com" /></label>
+            <label><span>Phone</span><input required type="tel" placeholder="071 000 0000" /></label>
+          </section>
+          <section>
+            <h3>Delivery</h3>
+            <div class="field-grid">
+              <label><span>First name</span><input required type="text" placeholder="First name" /></label>
+              <label><span>Last name</span><input required type="text" placeholder="Last name" /></label>
+            </div>
+            <label><span>Address</span><input required type="text" placeholder="Street address" /></label>
+            <div class="field-grid">
+              <label><span>City</span><input required type="text" placeholder="Johannesburg" /></label>
+              <label><span>Postal code</span><input required type="text" placeholder="2000" /></label>
+            </div>
+          </section>
+          <section>
+            <h3>Payment</h3>
+            <label><span>Card number</span><input required inputmode="numeric" placeholder="4242 4242 4242 4242" /></label>
+            <div class="field-grid">
+              <label><span>Expiry</span><input required placeholder="MM / YY" /></label>
+              <label><span>CVV</span><input required inputmode="numeric" placeholder="123" /></label>
+            </div>
+          </section>
+          <aside class="checkout-summary">
+            <h3>Order summary</h3>
+            <div data-checkout-items></div>
+            <div class="summary-row"><span>Subtotal</span><strong data-checkout-subtotal>R0.00</strong></div>
+            <div class="summary-row"><span>Delivery</span><strong>R60.00</strong></div>
+            <div class="summary-row total"><span>Total</span><strong data-checkout-total>R0.00</strong></div>
+            <button class="checkout-button" type="submit">Place fake order</button>
+            <p>This is a demo checkout. No payment will be processed.</p>
+          </aside>
+        </form>
+      </div>
+    </aside>
+
+    <div class="toast" data-toast>Added to cart</div>
+    <script src="script.js"></script>
+  </body>
+</html>
