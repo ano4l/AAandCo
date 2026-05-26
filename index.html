@@ -201,9 +201,9 @@
           <label class="search-box">
             <span>Search</span>
             <input type="search" placeholder="Find flavour or brand" data-search />
-          </label>
-        </div>
-
+            <label>
+            <span>Email</span><input name="email" required type="email" placeholder="you@example.com" /></label>
+            <label><span>Phone</span><input name="phone" required type="tel" placeholder="071 000 0000" /></label>
         <div class="filters" aria-label="Product filters">
           <button class="filter-pill active" type="button" data-filter="all"><span><small>Brand</small> All Brands</span></button>
           <button class="filter-pill" type="button" data-filter="Nasty"><span><small>Brand</small> Nasty</span></button>
@@ -345,13 +345,13 @@
           <section>
             <h3>Delivery</h3>
             <div class="field-grid">
-              <label><span>First name</span><input required type="text" placeholder="First name" /></label>
-              <label><span>Last name</span><input required type="text" placeholder="Last name" /></label>
+              <label><span>First name</span><input name="first_name" required type="text" placeholder="First name" /></label>
+              <label><span>Last name</span><input name="last_name" required type="text" placeholder="Last name" /></label>
             </div>
-            <label><span>Address</span><input required type="text" placeholder="Street address" /></label>
+            <label><span>Address</span><input name="address" required type="text" placeholder="Street address" /></label>
             <div class="field-grid">
-              <label><span>City</span><input required type="text" placeholder="Johannesburg" /></label>
-              <label><span>Postal code</span><input required type="text" placeholder="2000" /></label>
+              <label><span>City</span><input name="city" required type="text" placeholder="Johannesburg" /></label>
+              <label><span>Postal code</span><input name="postal_code" required type="text" placeholder="2000" /></label>
             </div>
           </section>
           <section>

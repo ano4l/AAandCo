@@ -299,13 +299,54 @@ cartButton.addEventListener("click", openCart);
 document.querySelector("[data-close-cart]").addEventListener("click", closeCart);
 document.querySelector("[data-open-checkout]").addEventListener("click", openCheckout);
 document.querySelector("[data-close-checkout]").addEventListener("click", closeCheckout);
-document.querySelector("[data-checkout-form]").addEventListener("submit", (event) => {
+document.querySelector("[data-checkout-form]").addEventListener("submit", async (event) => {
   event.preventDefault();
-  state.cart = {};
-  saveCart();
-  renderCart();
-  closeCheckout();
-  showToast("Fake order placed");
+  const form = event.target;
+
+  const order = {
+    customer: {
+      email: form.email.value,
+      phone: form.phone.value,
+      first_name: form.first_name.value,
+      last_name: form.last_name.value,
+      address: form.address.value,
+      city: form.city.value,
+      postal_code: form.postal_code.value
+    },
+    items: cartEntries().map(({ product, quantity }) => ({ id: product.id, name: product.name, unit_price: product.price, quantity })),
+    subtotal: cartEntries().reduce((s, e) => s + e.product.price * e.quantity, 0)
+  };
+
+  try {
+    const resp = await fetch('/api/create-stitch-session', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(order)
+    });
+
+    const json = await resp.json();
+    if (resp.ok) {
+      // Stitch (or the provider) commonly responds with a redirect URL or hosted payment id.
+      // If a redirect URL is provided, navigate there. Otherwise show a confirmation.
+      const redirectUrl = json.redirect_url || json.url || json.payment_url || (json.data && json.data.redirect_url);
+      if (redirectUrl) {
+        window.location = redirectUrl;
+        return;
+      }
+      showToast('Payment session created — complete in provider UI');
+      closeCheckout();
+      state.cart = {};
+      saveCart();
+      renderCart();
+      return;
+    }
+
+    console.error('Payment init failed', json);
+    showToast('Payment initiation failed');
+  } catch (err) {
+    console.error(err);
+    showToast('Payment request error');
+  }
 });
 document.querySelector("[data-open-account]").addEventListener("click", () => alert("Account sign-in opens when customer accounts are enabled."));
 document.querySelector(".newsletter").addEventListener("submit", (event) => {
