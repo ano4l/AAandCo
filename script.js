@@ -22,6 +22,9 @@ const cartDrawer = document.querySelector("[data-cart-drawer]");
 const cartItems = document.querySelector("[data-cart-items]");
 const toast = document.querySelector("[data-toast]");
 const cartButton = document.querySelector("[data-open-cart]");
+const menuButton = document.querySelector("[data-menu-toggle]");
+const siteHeader = document.querySelector(".site-header");
+const primaryNav = document.querySelector(".primary-nav");
 const resultCount = document.querySelector("[data-result-count]");
 const checkoutModal = document.querySelector("[data-checkout-modal]");
 const checkoutItems = document.querySelector("[data-checkout-items]");
@@ -206,6 +209,26 @@ function closeCheckout() {
   document.body.classList.remove("cart-open");
 }
 
+function openMenu() {
+  siteHeader.classList.add("menu-open");
+  menuButton.setAttribute("aria-expanded", "true");
+  menuButton.setAttribute("aria-label", "Close menu");
+}
+
+function closeMenu() {
+  siteHeader.classList.remove("menu-open");
+  menuButton.setAttribute("aria-expanded", "false");
+  menuButton.setAttribute("aria-label", "Open menu");
+}
+
+function toggleMenu() {
+  if (siteHeader.classList.contains("menu-open")) {
+    closeMenu();
+  } else {
+    openMenu();
+  }
+}
+
 function updateHeroScroll() {
   const y = Math.min(window.scrollY, 720);
   document.documentElement.style.setProperty("--scroll", y);
@@ -289,6 +312,10 @@ document.querySelector(".newsletter").addEventListener("submit", (event) => {
   event.preventDefault();
   showToast("You're on the list");
 });
+menuButton.addEventListener("click", toggleMenu);
+primaryNav.addEventListener("click", (event) => {
+  if (event.target.closest("a")) closeMenu();
+});
 cartDrawer.addEventListener("click", (event) => {
   if (event.target === cartDrawer) closeCart();
 });
@@ -299,7 +326,11 @@ window.addEventListener("keydown", (event) => {
   if (event.key === "Escape") {
     closeCart();
     closeCheckout();
+    closeMenu();
   }
+});
+window.addEventListener("resize", () => {
+  if (window.innerWidth > 700) closeMenu();
 });
 window.addEventListener("scroll", updateHeroScroll, { passive: true });
 

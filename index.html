@@ -24,7 +24,7 @@
           <span>AA &amp; Co</span>
         </a>
 
-        <nav class="primary-nav" aria-label="Primary navigation">
+        <nav class="primary-nav" id="primary-nav" aria-label="Primary navigation">
           <a class="active" href="#shop">Shop</a>
           <a href="#drops">Drops</a>
           <a href="#collections">Collections</a>
@@ -33,6 +33,11 @@
         </nav>
 
         <div class="header-actions">
+          <button class="menu-button" type="button" data-menu-toggle aria-controls="primary-nav" aria-expanded="false" aria-label="Open menu">
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
           <button class="text-button" type="button" data-open-account>My account</button>
           <button class="cart-button" type="button" data-open-cart aria-label="Open cart">
             <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6.5 7.5h11l1 12h-13l1-12Z"/><path d="M9 9V6.8a3 3 0 0 1 6 0V9"/></svg>
