@@ -43,40 +43,60 @@
 
     <main>
       <section class="hero" id="shop">
-        <div class="hero-visual" aria-hidden="true">
-          <img class="hero-product hero-product-one" src="Vape Images/BlueRazzLone.png" alt="" />
-          <img class="hero-product hero-product-two" src="Vape Images/CaliforniaCherryLone.png" alt="" />
-          <img class="hero-product hero-product-three" src="Vape Images/MiamiMintLone.png" alt="" />
-          <img class="hero-product hero-product-four" src="Vape Images/DragonStrawnanaLone.png" alt="" />
-        </div>
-        <div class="hero-copy">
-          <p class="eyebrow">Fresh AA &amp; Co stock</p>
-          <h1>AA &amp; Co<br />Vape Store</h1>
-          <p class="intro">All vapes are R185 excluding delivery. Pick a flavour, check live availability, and place an order in a clean checkout flow built for cash or card payments.</p>
-          <div class="hero-assurance" aria-label="Shopping reassurance">
-            <span>No account needed</span>
-            <span>Live stock checks</span>
-            <span>Delivery or collection</span>
-            <span>ID may be requested</span>
+        <div class="hero-shell">
+          <div class="hero-copy">
+            <p class="eyebrow">AA &amp; Co</p>
+            <h1>Delivery Only</h1>
+            <div class="hero-actions">
+              <a class="primary-button" href="#catalog">Shop catalog</a>
+              <button class="secondary-button" type="button" data-open-cart>View cart</button>
+            </div>
+            <dl class="hero-metrics" aria-label="Store highlights">
+              <div>
+                <dt>Unit price</dt>
+                <dd>R185</dd>
+              </div>
+              <div>
+                <dt>Current stock</dt>
+                <dd data-total-stock>0</dd>
+              </div>
+              <div>
+                <dt>Flavours</dt>
+                <dd data-product-count>0</dd>
+              </div>
+            </dl>
           </div>
-          <div class="hero-actions">
-            <a class="primary-button" href="#catalog">Shop catalog</a>
-            <button class="secondary-button" type="button" data-open-cart>View cart</button>
+
+          <div class="hero-showcase" aria-label="Featured vape flavours">
+            <article class="hero-card hero-card-large">
+              <img src="Vape Images/BlueRazz.png" alt="Blue Razz vape" />
+              <div>
+                <span>Fresh stock</span>
+                <strong>Blue Razz</strong>
+              </div>
+            </article>
+            <article class="hero-card hero-card-wide">
+              <img src="Vape Images/CaliforniaCherry.png" alt="California Cherry vape" />
+              <div>
+                <span>Popular</span>
+                <strong>California Cherry</strong>
+              </div>
+            </article>
+            <article class="hero-card hero-card-small">
+              <img src="Vape Images/MiamiMint.png" alt="Miami Mint vape" />
+              <div>
+                <span>Cool profile</span>
+                <strong>Miami Mint</strong>
+              </div>
+            </article>
+            <article class="hero-card hero-card-small accent-card">
+              <img src="Vape Images/DragonStrawnana.png" alt="Dragon Strawnana vape" />
+              <div>
+                <span>Limited</span>
+                <strong>Dragon Strawnana</strong>
+              </div>
+            </article>
           </div>
-          <dl class="hero-metrics" aria-label="Store highlights">
-            <div>
-              <dt>Unit price</dt>
-              <dd>R185</dd>
-            </div>
-            <div>
-              <dt>Current stock</dt>
-              <dd data-total-stock>0</dd>
-            </div>
-            <div>
-              <dt>Flavours</dt>
-              <dd data-product-count>0</dd>
-            </div>
-          </dl>
         </div>
       </section>
 
@@ -93,12 +113,12 @@
         <article>
           <span>02</span>
           <h2>Fast checkout</h2>
-          <p>Customers choose delivery or collection, then select cash or card at checkout.</p>
+          <p>Customers add delivery details, then select cash or card at checkout.</p>
         </article>
         <article>
           <span>03</span>
           <h2>Clear orders</h2>
-          <p>Customers get a straightforward cart, checkout, and delivery or collection choice.</p>
+          <p>Customers get a straightforward cart, delivery details, and checkout confirmation.</p>
         </article>
       </section>
 
@@ -123,8 +143,8 @@
           </article>
           <article>
             <span>03</span>
-            <strong>Pick fulfilment</strong>
-            <p>Select delivery or collection before confirming the order total.</p>
+            <strong>Add delivery</strong>
+            <p>Enter delivery details before confirming the order total.</p>
           </article>
           <article>
             <span>04</span>
@@ -180,13 +200,12 @@
         </div>
         <div class="checkout-copy">
           <p class="eyebrow">Checkout</p>
-          <h2>Built for online orders and quick local fulfilment.</h2>
+          <h2>Built for delivery-only online orders.</h2>
           <p>Cart quantities stop at available stock, so customers only order flavours that are currently available.</p>
           <div class="checkout-points">
             <span>Cash</span>
             <span>Card</span>
             <span>Delivery</span>
-            <span>Collection</span>
           </div>
           <button class="primary-button" type="button" data-open-cart>Open checkout</button>
         </div>
@@ -206,7 +225,7 @@
         <article>
           <span>Order flow</span>
           <strong>Simple checkout</strong>
-          <p>Add flavours, choose fulfilment, and submit the order without extra steps.</p>
+          <p>Add flavours, enter delivery details, and submit the order without extra steps.</p>
         </article>
       </section>
     </main>
@@ -274,10 +293,9 @@
               <label><span>Method</span>
                 <select name="delivery_method" data-delivery-method>
                   <option value="delivery">Delivery - R60</option>
-                  <option value="collection">Collection - R0</option>
                 </select>
               </label>
-              <label><span>Address or collection note</span><textarea name="address" rows="3" placeholder="Street address, area, or collection note"></textarea></label>
+              <label><span>Delivery address</span><textarea name="address" rows="3" placeholder="Street address, area, delivery note"></textarea></label>
             </section>
 
             <section>

@@ -811,18 +811,6 @@ function closeMenu() {
   menuButton.setAttribute("aria-label", "Open menu");
 }
 
-function updateHeroScroll() {
-  const y = Math.min(window.scrollY, 720);
-  const heroOne = qs(".hero-product-one");
-  const heroTwo = qs(".hero-product-two");
-  const heroThree = qs(".hero-product-three");
-  const heroFour = qs(".hero-product-four");
-  if (heroOne) heroOne.style.transform = `translateY(${y * 0.03}px) rotate(${-8 - y * 0.006}deg)`;
-  if (heroTwo) heroTwo.style.transform = `translateY(${y * -0.02}px) rotate(${9 + y * 0.005}deg)`;
-  if (heroThree) heroThree.style.transform = `translateY(${y * 0.025}px) rotate(${4 + y * 0.006}deg)`;
-  if (heroFour) heroFour.style.transform = `translateY(${y * -0.015}px) rotate(${-10 - y * 0.004}deg)`;
-}
-
 function initAgeGate() {
   if (localStorage.getItem(storageKeys.age) === "yes") return;
   ageModal.classList.add("open");
@@ -965,7 +953,6 @@ window.addEventListener("keydown", (event) => {
 window.addEventListener("resize", () => {
   if (window.innerWidth > 760) closeMenu();
 });
-window.addEventListener("scroll", updateHeroScroll, { passive: true });
 window.addEventListener("hashchange", openOwnerConsoleFromRoute);
 
 qs("[data-confirm-age]").addEventListener("click", () => {
@@ -980,6 +967,5 @@ if (sessionStorage.getItem(storageKeys.admin) === "yes") {
 }
 
 renderAll();
-updateHeroScroll();
 initAgeGate();
 openOwnerConsoleFromRoute();
