@@ -1,198 +1,354 @@
+const PRODUCT_PRICE = 185;
+const DELIVERY_FEE = 60;
+const STAFF_PIN = "Cannafrica2026";
+
+const storageKeys = {
+  age: "aa-age-confirmed",
+  cart: "aa-cart",
+  stock: "aa-stock",
+  orders: "aa-orders",
+  purchases: "aa-purchases",
+  admin: "aa-admin-unlocked"
+};
+
 const products = [
-  { id: "elfbar-ew9000-cherry", brand: "Elfbar", name: "Elfbar EW9000 Kit", flavour: "California Cherry", price: 295, puffs: "9K", type: "Rechargeable kit", badge: "EW9000", swatch: "pink", more: "+2", image: "Vape Images/CALIFORNIA-CHERRY-ELFBAR9K.webp" },
-  { id: "elfbar-ew18000-strawberry", brand: "Elfbar", name: "Elfbar EW18000 Pod", flavour: "Strawberry Ice", price: 279, puffs: "18K", type: "Replacement pod", badge: "EW18000", swatch: "pale", more: "+5", image: "Vape Images/STRAWBERRY-ICE-18K.webp" },
-  { id: "elfbar-ew9000-sour", brand: "Elfbar", name: "Elfbar EW9000 Kit", flavour: "Sour Lush", price: 295, puffs: "9K", type: "Rechargeable kit", badge: "Kit", swatch: "lime", more: "", image: "Vape Images/CALIFORNIA-CHERRY-ELFBAR9K.webp" },
-  { id: "elfbar-ew18000-berry", brand: "Elfbar", name: "Elfbar EW18000 Pod", flavour: "Berry Grape", price: 279, puffs: "18K", type: "Replacement pod", badge: "Pod", swatch: "purple", more: "+4", image: "Vape Images/STRAWBERRY-ICE-18K.webp" },
-  { id: "accessory-blunt-wrap", brand: "Accessories", name: "Blunt Wrap", flavour: "Wrap", price: 55, puffs: "Accessory", type: "Rolling accessory", badge: "R55", swatch: "plum", more: "", image: "Vape Images/Blunt Wrap.webp" },
-  { id: "accessory-lighter", brand: "Accessories", name: "Lighter", flavour: "Pocket lighter", price: 30, puffs: "Accessory", type: "Smoking accessory", badge: "R30", swatch: "orange", more: "", image: "Vape Images/Lighter.webp" },
-  { id: "accessory-ocb-slim", brand: "Accessories", name: "OCB Slim", flavour: "Slim papers", price: 35, puffs: "Accessory", type: "Rolling paper", badge: "R35", swatch: "cyan", more: "", image: "Vape Images/OCB Slim.webp" },
-  { id: "accessory-raw-papers", brand: "Accessories", name: "Rolling Paper RAW", flavour: "RAW papers", price: 40, puffs: "Accessory", type: "Rolling paper", badge: "R40", swatch: "green", more: "", image: "Vape Images/Rolling Paper RAW.webp" },
-  { id: "nasty-9k-berry", brand: "Nasty", name: "Nasty Bar 9K", flavour: "Berry Grape", price: 249, puffs: "9K", type: "Disposable", badge: "9K", swatch: "purple", more: "+6", image: "https://smokeorganic.co.za/cdn/shop/files/Berry_grape_flavour_Nasty_Bar_9k_Disposable_vape.jpg?v=1766139119" },
-  { id: "nasty-9k-tropical", brand: "Nasty", name: "Nasty Bar 9K", flavour: "Tropical Cherry", price: 249, puffs: "9K", type: "Disposable", badge: "9K", swatch: "red", more: "", image: "https://smokeorganic.co.za/cdn/shop/files/Tropical_cherry_flavour_Nasty_Bar_9k_Disposable_vape.jpg?v=1766139119" },
-  { id: "nasty-9k-red", brand: "Nasty", name: "Nasty Bar 9K", flavour: "Red Energy", price: 249, puffs: "9K", type: "Disposable", badge: "9K", swatch: "orange", more: "", image: "https://smokeorganic.co.za/cdn/shop/files/Red_energy_flavour_Nasty_Bar_9k_Disposable_vape.jpg?v=1766139119" },
-  { id: "nasty-9k-watermelon", brand: "Nasty", name: "Nasty Bar 9K", flavour: "Watermelon Raspberry", price: 249, puffs: "9K", type: "Disposable", badge: "9K", swatch: "green", more: "+3", image: "https://smokeorganic.co.za/cdn/shop/files/Watermelon_raspberry_flavour_Nasty_Bar_9k_Disposable_vape.jpg?v=1766139119" }
+  { id: "blue-razz", sku: "AA-BR", flavour: "Blue Razz", profile: "Berry ice", category: "berry", stock: 3, image: "Vape Images/BlueRazz.png", loneImage: "Vape Images/BlueRazzLone.png" },
+  { id: "grape", sku: "AA-GR", flavour: "Grape", profile: "Berry", category: "berry", stock: 3, image: "Vape Images/Grape.png", loneImage: "Vape Images/GrapeLone.png" },
+  { id: "peach", sku: "AA-PE", flavour: "Peach", profile: "Fruit", category: "fruit", stock: 3, image: "Vape Images/Peach.png" },
+  { id: "cherry-strazz", sku: "AA-CS", flavour: "Cherry Strazz", profile: "Cherry berry", category: "berry", stock: 3, image: "Vape Images/CherryStrazz.png", loneImage: "Vape Images/CherryStrazzLone.png" },
+  { id: "pink-lemonade", sku: "AA-PL", flavour: "Pink Lemonade", profile: "Citrus fruit", category: "fruit", stock: 3, image: "Vape Images/PinkLemonade.png" },
+  { id: "california-cherry", sku: "AA-CC", flavour: "California Cherry", profile: "Cherry", category: "fruit", stock: 3, image: "Vape Images/CaliforniaCherry.png", loneImage: "Vape Images/CaliforniaCherryLone.png" },
+  { id: "miami-mint", sku: "AA-MM", flavour: "Miami Mint", profile: "Mint", category: "mint", stock: 3, image: "Vape Images/MiamiMint.png", loneImage: "Vape Images/MiamiMintLone.png" },
+  { id: "watermelon", sku: "AA-WM", flavour: "Watermelon", profile: "Fruit", category: "fruit", stock: 3, image: "Vape Images/Watermelon.png", loneImage: "Vape Images/WatermelonLone.png" },
+  { id: "sour-lush", sku: "AA-SL", flavour: "Sour Lush", profile: "Sour fruit", category: "sour", stock: 3, image: "Vape Images/Sour Lush.png", loneImage: "Vape Images/SourLushLone.png" },
+  { id: "dragon-strawnana", sku: "AA-DS", flavour: "Dragon Strawnana", profile: "Dragon fruit", category: "fruit", stock: 2, image: "Vape Images/DragonStrawnana.png", loneImage: "Vape Images/DragonStrawnanaLone.png" },
+  { id: "mango", sku: "AA-MG", flavour: "Mango", profile: "Tropical", category: "fruit", stock: 1, image: "Vape Images/Mango.png" }
 ];
+
+const qs = (selector, root = document) => root.querySelector(selector);
+const qsa = (selector, root = document) => [...root.querySelectorAll(selector)];
+const productById = (id) => products.find((product) => product.id === id);
+const loneOrDefault = (product) => product?.loneImage || product?.image;
+const money = (value) => `R${Number(value || 0).toFixed(2)}`;
+
+const productGrid = qs("[data-products]");
+const cartDrawer = qs("[data-cart-drawer]");
+const cartItems = qs("[data-cart-items]");
+const toast = qs("[data-toast]");
+const cartButtons = qsa("[data-open-cart]");
+const menuButton = qs("[data-menu-toggle]");
+const siteHeader = qs(".site-header");
+const primaryNav = qs(".primary-nav");
+const resultCount = qs("[data-result-count]");
+const checkoutModal = qs("[data-checkout-modal]");
+const checkoutForm = qs("[data-checkout-form]");
+const checkoutItems = qs("[data-checkout-items]");
+const checkoutSuccess = qs("[data-checkout-success]");
+const ownerModal = qs("[data-owner-modal]");
+const adminGate = qs("[data-admin-gate]");
+const adminConsole = qs("[data-admin-console]");
+const adminContent = qs("[data-admin-content]");
+const ageModal = qs("[data-age-modal]");
+
+function safeParse(key, fallback) {
+  try {
+    const value = localStorage.getItem(key);
+    return value ? JSON.parse(value) : fallback;
+  } catch {
+    return fallback;
+  }
+}
+
+function loadStock() {
+  const saved = safeParse(storageKeys.stock, {});
+  return products.reduce((stock, product) => {
+    const savedValue = Number(saved[product.id]);
+    stock[product.id] = Number.isFinite(savedValue) ? Math.max(0, savedValue) : product.stock;
+    return stock;
+  }, {});
+}
 
 const state = {
   filter: "all",
-  sort: "new",
+  sort: "featured",
   query: "",
-  cart: JSON.parse(localStorage.getItem("cloud-counter-cart") || "{}")
+  adminTab: "overview",
+  stock: loadStock(),
+  cart: safeParse(storageKeys.cart, {}),
+  orders: safeParse(storageKeys.orders, []),
+  purchases: safeParse(storageKeys.purchases, [])
 };
 
-const money = (value) => `R${value.toFixed(2)}`;
-const productGrid = document.querySelector("[data-products]");
-const cartDrawer = document.querySelector("[data-cart-drawer]");
-const cartItems = document.querySelector("[data-cart-items]");
-const toast = document.querySelector("[data-toast]");
-const cartButton = document.querySelector("[data-open-cart]");
-const menuButton = document.querySelector("[data-menu-toggle]");
-const siteHeader = document.querySelector(".site-header");
-const primaryNav = document.querySelector(".primary-nav");
-const resultCount = document.querySelector("[data-result-count]");
-const checkoutModal = document.querySelector("[data-checkout-modal]");
-const checkoutItems = document.querySelector("[data-checkout-items]");
-
-function filteredProducts() {
-  const query = state.query.trim().toLowerCase();
-  const filtered = products.filter((product) => {
-    const inBrand = state.filter === "all" || product.brand === state.filter;
-    const inSearch = [product.brand, product.name, product.flavour, product.puffs].join(" ").toLowerCase().includes(query);
-    return inBrand && inSearch;
-  });
-
-  return filtered.sort((a, b) => {
-    if (state.sort === "price-low") return a.price - b.price;
-    if (state.sort === "price-high") return b.price - a.price;
-    return products.indexOf(a) - products.indexOf(b);
-  });
-}
-
-function renderProducts() {
-  const visibleProducts = filteredProducts();
-  resultCount.innerHTML = `Showing <strong>${visibleProducts.length}</strong> of <strong>${products.length}</strong> products`;
-  productGrid.innerHTML = visibleProducts.map((product) => `
-    <article class="product-card reveal">
-      <div class="image-tile">
-        <img src="${product.image}" alt="${product.name} ${product.flavour}" loading="lazy" />
-        <span class="badge">${product.badge}</span>
-        <span class="swatch ${product.swatch}"></span>
-        ${product.more ? `<span class="more">${product.more}</span>` : ""}
-      </div>
-      <div class="product-meta">
-        <div>
-          <h3>${product.name}</h3>
-          <p>${product.flavour} / ${product.puffs}</p>
-          <div class="product-specs">
-            <span>${product.type}</span>
-            <span>${product.brand}</span>
-          </div>
-          <strong>${money(product.price)}</strong>
-        </div>
-        <button class="add-button" type="button" data-add="${product.id}" aria-label="Add ${product.name} ${product.flavour} to cart">+</button>
-      </div>
-    </article>
-  `).join("");
-
-  observeReveals();
-}
-
 function saveCart() {
-  localStorage.setItem("cloud-counter-cart", JSON.stringify(state.cart));
+  localStorage.setItem(storageKeys.cart, JSON.stringify(state.cart));
+}
+
+function saveStock() {
+  localStorage.setItem(storageKeys.stock, JSON.stringify(state.stock));
+}
+
+function saveOrders() {
+  localStorage.setItem(storageKeys.orders, JSON.stringify(state.orders));
+}
+
+function savePurchases() {
+  localStorage.setItem(storageKeys.purchases, JSON.stringify(state.purchases));
+}
+
+function stockFor(id) {
+  return Number(state.stock[id] || 0);
+}
+
+function setStock(id, value) {
+  state.stock[id] = Math.max(0, Math.floor(Number(value) || 0));
+  saveStock();
 }
 
 function cartEntries() {
   return Object.entries(state.cart)
-    .map(([id, quantity]) => ({ product: products.find((item) => item.id === id), quantity }))
+    .map(([id, quantity]) => ({ product: productById(id), quantity: Number(quantity) || 0 }))
     .filter((entry) => entry.product && entry.quantity > 0);
 }
 
-function renderCart() {
+function sanitizeCart() {
+  let changed = false;
+  Object.keys(state.cart).forEach((id) => {
+    const product = productById(id);
+    if (!product) {
+      delete state.cart[id];
+      changed = true;
+      return;
+    }
+    const capped = Math.min(Math.max(0, Number(state.cart[id]) || 0), stockFor(id));
+    if (capped <= 0) {
+      delete state.cart[id];
+      changed = true;
+    } else if (capped !== state.cart[id]) {
+      state.cart[id] = capped;
+      changed = true;
+    }
+  });
+  if (changed) saveCart();
+}
+
+function cartTotals(deliveryMethod = "delivery") {
   const entries = cartEntries();
-  const count = entries.reduce((sum, entry) => sum + entry.quantity, 0);
-  const subtotal = entries.reduce((sum, entry) => sum + entry.product.price * entry.quantity, 0);
-  const total = subtotal > 0 ? subtotal + 60 : 0;
+  const subtotal = entries.reduce((sum, entry) => sum + PRODUCT_PRICE * entry.quantity, 0);
+  const delivery = subtotal > 0 && deliveryMethod === "delivery" ? DELIVERY_FEE : 0;
+  return { entries, subtotal, delivery, total: subtotal + delivery };
+}
 
-  document.querySelector("[data-cart-count]").textContent = count;
-  document.querySelector("[data-cart-title]").textContent = `${count} ${count === 1 ? "item" : "items"}`;
-  document.querySelector("[data-subtotal]").textContent = money(subtotal);
-  document.querySelector("[data-total]").textContent = money(total);
+function filteredProducts() {
+  const query = state.query.trim().toLowerCase();
+  const visible = products.filter((product) => {
+    const matchesFilter =
+      state.filter === "all" ||
+      product.category === state.filter ||
+      (state.filter === "low" && stockFor(product.id) <= 1);
+    const matchesSearch = [product.flavour, product.profile, product.sku]
+      .join(" ")
+      .toLowerCase()
+      .includes(query);
+    return matchesFilter && matchesSearch;
+  });
 
-  cartItems.innerHTML = entries.length ? entries.map(({ product, quantity }) => `
-    <article class="cart-item">
-      <img src="${product.image}" alt="${product.name} ${product.flavour}" />
-      <div>
-        <h4>${product.name}</h4>
-        <p>${product.flavour}</p>
-        <div class="cart-controls">
-          <div class="qty-controls" aria-label="Quantity controls">
-            <button type="button" data-dec="${product.id}" aria-label="Decrease quantity">-</button>
-            <strong>${quantity}</strong>
-            <button type="button" data-inc="${product.id}" aria-label="Increase quantity">+</button>
-          </div>
-          <span class="cart-price">${money(product.price * quantity)}</span>
+  return visible.sort((a, b) => {
+    if (state.sort === "stock-high") return stockFor(b.id) - stockFor(a.id);
+    if (state.sort === "stock-low") return stockFor(a.id) - stockFor(b.id);
+    if (state.sort === "name") return a.flavour.localeCompare(b.flavour);
+    return products.indexOf(a) - products.indexOf(b);
+  });
+}
+
+function stockBadge(stock) {
+  if (stock <= 0) return `<span class="stock-badge out">Sold out</span>`;
+  if (stock <= 1) return `<span class="stock-badge low">${stock} left</span>`;
+  return `<span class="stock-badge">${stock} in stock</span>`;
+}
+
+function renderProducts() {
+  const visibleProducts = filteredProducts();
+  if (resultCount) {
+    resultCount.innerHTML = `Showing <strong>${visibleProducts.length}</strong> of <strong>${products.length}</strong> flavours`;
+  }
+
+  productGrid.innerHTML = visibleProducts.map((product) => {
+    const stock = stockFor(product.id);
+    const inCart = Number(state.cart[product.id] || 0);
+    const disabled = stock <= 0 || inCart >= stock;
+    const buttonText = stock <= 0 ? "Sold out" : inCart >= stock ? "Max in cart" : "Add";
+    return `
+      <article class="product-card reveal">
+        <div class="image-tile">
+          <img src="${product.image}" alt="${product.flavour} vape" />
+          <span class="badge">R185</span>
+          ${stockBadge(stock)}
+          <span class="flavour-chip">${product.profile}</span>
         </div>
-        <button class="remove-button" type="button" data-remove="${product.id}">Remove</button>
-      </div>
-    </article>
-  `).join("") : `<div class="empty-cart">Your cart is empty.<br />Add a flavour from the catalog.</div>`;
+        <div class="product-meta">
+          <div>
+            <h3>${product.flavour}</h3>
+            <p>${product.profile} profile. ${stock > 1 ? `${stock} units available` : stock === 1 ? "Last unit available" : "Currently sold out"} before delivery.</p>
+            <div class="product-specs">
+              <span>${product.sku}</span>
+              <span>${product.category}</span>
+              <span>${stock} available</span>
+            </div>
+          </div>
+          <div class="product-buy">
+            <strong>${money(PRODUCT_PRICE)}</strong>
+            <button class="add-button" type="button" data-add="${product.id}" ${disabled ? "disabled" : ""} aria-label="Add ${product.flavour} to cart">${buttonText}</button>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join("") || `<div class="empty-state">No products match this search.</div>`;
+}
+
+function renderStockRibbon() {
+  const ribbon = qs("[data-stock-ribbon]");
+  if (!ribbon) return;
+  const items = products.map((product) => `<span>${product.flavour}: ${stockFor(product.id)} in stock</span>`).join("");
+  ribbon.innerHTML = items + items;
+}
+
+function renderHeroStats() {
+  const totalStock = products.reduce((sum, product) => sum + stockFor(product.id), 0);
+  const totalStockElement = qs("[data-total-stock]");
+  const productCountElement = qs("[data-product-count]");
+  if (totalStockElement) totalStockElement.textContent = `${totalStock} units`;
+  if (productCountElement) productCountElement.textContent = `${products.length}`;
+}
+
+function renderCart() {
+  sanitizeCart();
+  const { entries, subtotal, delivery, total } = cartTotals("delivery");
+  const count = entries.reduce((sum, entry) => sum + entry.quantity, 0);
+
+  qs("[data-cart-count]").textContent = count;
+  qs("[data-cart-title]").textContent = `${count} ${count === 1 ? "item" : "items"}`;
+  qs("[data-subtotal]").textContent = money(subtotal);
+  qs("[data-delivery]").textContent = money(delivery);
+  qs("[data-total]").textContent = money(total);
+
+  cartItems.innerHTML = entries.length ? entries.map(({ product, quantity }) => {
+    const stock = stockFor(product.id);
+    return `
+      <article class="cart-item">
+        <img src="${loneOrDefault(product)}" alt="${product.flavour} vape" />
+        <div>
+          <h4>${product.flavour}</h4>
+          <p>${stock} available now</p>
+          <div class="cart-controls">
+            <div class="qty-controls" aria-label="Quantity controls">
+              <button type="button" data-dec="${product.id}" aria-label="Decrease quantity">-</button>
+              <strong>${quantity}</strong>
+              <button type="button" data-inc="${product.id}" ${quantity >= stock ? "disabled" : ""} aria-label="Increase quantity">+</button>
+            </div>
+            <span class="cart-price">${money(PRODUCT_PRICE * quantity)}</span>
+          </div>
+          <button class="remove-button" type="button" data-remove="${product.id}">Remove</button>
+        </div>
+      </article>
+    `;
+  }).join("") : `<div class="empty-cart">Your cart is empty.<br />Add a flavour from the catalog.</div>`;
+
   renderCheckout();
 }
 
 function renderCheckout() {
-  const entries = cartEntries();
-  const subtotal = entries.reduce((sum, entry) => sum + entry.product.price * entry.quantity, 0);
-  const total = subtotal > 0 ? subtotal + 60 : 0;
+  const method = qs("[data-delivery-method]")?.value || "delivery";
+  const { entries, subtotal, delivery, total } = cartTotals(method);
 
   checkoutItems.innerHTML = entries.length ? entries.map(({ product, quantity }) => `
     <div class="checkout-line">
-      <img src="${product.image}" alt="${product.name} ${product.flavour}" />
+      <img src="${loneOrDefault(product)}" alt="${product.flavour} vape" />
       <div>
         <strong>${product.flavour}</strong>
-        <span>${product.name} x ${quantity}</span>
+        <span>${money(PRODUCT_PRICE)} x ${quantity}</span>
       </div>
-      <strong>${money(product.price * quantity)}</strong>
+      <strong>${money(PRODUCT_PRICE * quantity)}</strong>
     </div>
   `).join("") : `<div class="empty-cart">Your checkout is empty.</div>`;
 
-  document.querySelector("[data-checkout-subtotal]").textContent = money(subtotal);
-  document.querySelector("[data-checkout-total]").textContent = money(total);
+  qs("[data-checkout-subtotal]").textContent = money(subtotal);
+  qs("[data-checkout-delivery]").textContent = money(delivery);
+  qs("[data-checkout-total]").textContent = money(total);
 }
 
-function animateToCart(button, product) {
-  const sourceImage = button.closest(".product-card")?.querySelector(".image-tile img");
-  if (!sourceImage) return;
-
-  const imageRect = sourceImage.getBoundingClientRect();
-  const cartRect = cartButton.getBoundingClientRect();
-  const flyer = sourceImage.cloneNode();
-  flyer.className = "fly-image";
-  flyer.style.left = `${imageRect.left + imageRect.width / 2 - 36}px`;
-  flyer.style.top = `${imageRect.top + imageRect.height / 2 - 36}px`;
-  document.body.appendChild(flyer);
-
-  requestAnimationFrame(() => {
-    const x = cartRect.left + cartRect.width / 2 - (imageRect.left + imageRect.width / 2);
-    const y = cartRect.top + cartRect.height / 2 - (imageRect.top + imageRect.height / 2);
-    flyer.style.transform = `translate(${x}px, ${y}px) scale(0.22) rotate(10deg)`;
-    flyer.style.opacity = "0.18";
-  });
-
-  window.setTimeout(() => flyer.remove(), 700);
-}
-
-function addToCart(id, button) {
-  const product = products.find((item) => item.id === id);
-  state.cart[id] = (state.cart[id] || 0) + 1;
-  saveCart();
+function renderAll() {
+  renderHeroStats();
+  renderStockRibbon();
+  renderProducts();
   renderCart();
-  if (button && product) {
-    button.classList.add("adding");
-    animateToCart(button, product);
-    window.setTimeout(() => button.classList.remove("adding"), 220);
-  }
-  cartButton.classList.add("bump");
-  window.setTimeout(() => cartButton.classList.remove("bump"), 260);
-  showToast(`${product ? product.flavour : "Item"} added`);
+  renderAdmin();
 }
 
 function showToast(message = "Done") {
   toast.textContent = message;
   toast.classList.add("show");
   window.clearTimeout(showToast.timer);
-  showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 1400);
+  showToast.timer = window.setTimeout(() => toast.classList.remove("show"), 1600);
+}
+
+function animateToCart(button) {
+  const sourceImage = button.closest(".product-card")?.querySelector(".image-tile img");
+  const cartButton = qs("[data-open-cart]");
+  if (!sourceImage || !cartButton) return;
+
+  const imageRect = sourceImage.getBoundingClientRect();
+  const cartRect = cartButton.getBoundingClientRect();
+  const flyer = sourceImage.cloneNode();
+  flyer.className = "fly-image";
+  flyer.style.left = `${imageRect.left + imageRect.width / 2 - 38}px`;
+  flyer.style.top = `${imageRect.top + imageRect.height / 2 - 38}px`;
+  document.body.appendChild(flyer);
+
+  requestAnimationFrame(() => {
+    const x = cartRect.left + cartRect.width / 2 - (imageRect.left + imageRect.width / 2);
+    const y = cartRect.top + cartRect.height / 2 - (imageRect.top + imageRect.height / 2);
+    flyer.style.transform = `translate(${x}px, ${y}px) scale(0.24) rotate(8deg)`;
+    flyer.style.opacity = "0.16";
+  });
+
+  window.setTimeout(() => flyer.remove(), 700);
+}
+
+function addToCart(id, button) {
+  const product = productById(id);
+  if (!product) return;
+  const stock = stockFor(id);
+  const current = Number(state.cart[id] || 0);
+  if (stock <= 0) {
+    showToast(`${product.flavour} is sold out`);
+    return;
+  }
+  if (current >= stock) {
+    showToast(`Only ${stock} ${product.flavour} available`);
+    return;
+  }
+
+  state.cart[id] = current + 1;
+  saveCart();
+  renderAll();
+  if (button) animateToCart(button);
+  qsa("[data-open-cart]").forEach((cartButton) => {
+    cartButton.classList.add("bump");
+    window.setTimeout(() => cartButton.classList.remove("bump"), 260);
+  });
+  showToast(`${product.flavour} added`);
 }
 
 function openCart() {
   cartDrawer.classList.add("open");
   cartDrawer.setAttribute("aria-hidden", "false");
-  document.body.classList.add("cart-open");
+  updateBodyLock();
 }
 
 function closeCart() {
   cartDrawer.classList.remove("open");
   cartDrawer.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("cart-open");
+  updateBodyLock();
 }
 
 function openCheckout() {
@@ -201,22 +357,452 @@ function openCheckout() {
     return;
   }
   closeCart();
+  checkoutForm.hidden = false;
+  checkoutSuccess.hidden = true;
   renderCheckout();
   checkoutModal.classList.add("open");
   checkoutModal.setAttribute("aria-hidden", "false");
-  document.body.classList.add("cart-open");
+  updateBodyLock();
 }
 
 function closeCheckout() {
   checkoutModal.classList.remove("open");
   checkoutModal.setAttribute("aria-hidden", "true");
-  document.body.classList.remove("cart-open");
+  updateBodyLock();
 }
 
-function openMenu() {
-  siteHeader.classList.add("menu-open");
-  menuButton.setAttribute("aria-expanded", "true");
-  menuButton.setAttribute("aria-label", "Close menu");
+function updateBodyLock() {
+  document.body.classList.toggle(
+    "cart-open",
+    cartDrawer.classList.contains("open") ||
+      checkoutModal.classList.contains("open") ||
+      ownerModal.classList.contains("open")
+  );
+}
+
+function createOrder({ source, customer, deliveryMethod, address, paymentMethod, items, delivery }) {
+  const subtotal = items.reduce((sum, item) => sum + item.unitPrice * item.quantity, 0);
+  return {
+    id: `AA-${Date.now().toString(36).toUpperCase()}`,
+    createdAt: new Date().toISOString(),
+    source,
+    customer,
+    deliveryMethod,
+    address,
+    paymentMethod,
+    paymentStatus: paymentMethod === "cash" ? "Due on delivery" : "Pending card payment",
+    fulfilmentStatus: source === "Counter sale" ? "Fulfilled" : "New",
+    items,
+    subtotal,
+    delivery,
+    total: subtotal + delivery
+  };
+}
+
+function checkoutHasStock(entries) {
+  return entries.every((entry) => stockFor(entry.product.id) >= entry.quantity);
+}
+
+function decrementStock(items) {
+  items.forEach((item) => {
+    setStock(item.id, stockFor(item.id) - item.quantity);
+  });
+}
+
+function handleCheckoutSubmit(event) {
+  event.preventDefault();
+  const { entries, delivery } = cartTotals(qs("[data-delivery-method]")?.value || "delivery");
+  if (!entries.length) {
+    showToast("Cart is empty");
+    return;
+  }
+  if (!checkoutHasStock(entries)) {
+    sanitizeCart();
+    renderAll();
+    showToast("Cart updated to match available stock");
+    return;
+  }
+
+  const form = new FormData(checkoutForm);
+  const deliveryMethod = String(form.get("delivery_method") || "delivery");
+  const address = String(form.get("address") || "").trim();
+  if (deliveryMethod === "delivery" && !address) {
+    showToast("Add a delivery address");
+    return;
+  }
+
+  const order = createOrder({
+    source: "Online checkout",
+    customer: {
+      name: String(form.get("customer_name") || "Customer").trim(),
+      phone: String(form.get("phone") || "").trim(),
+      email: String(form.get("email") || "").trim()
+    },
+    deliveryMethod,
+    address,
+    paymentMethod: String(form.get("payment_method") || "cash"),
+    delivery,
+    items: entries.map(({ product, quantity }) => ({
+      id: product.id,
+      sku: product.sku,
+      flavour: product.flavour,
+      unitPrice: PRODUCT_PRICE,
+      quantity
+    }))
+  });
+
+  state.orders.unshift(order);
+  decrementStock(order.items);
+  state.cart = {};
+  saveOrders();
+  saveCart();
+  saveStock();
+  checkoutForm.reset();
+  qs("[data-success-order]").textContent = order.id;
+  checkoutForm.hidden = true;
+  checkoutSuccess.hidden = false;
+  renderAll();
+}
+
+function productOptions(selectedId = "") {
+  return products.map((product) => `<option value="${product.id}" ${product.id === selectedId ? "selected" : ""}>${product.flavour} (${stockFor(product.id)} in stock)</option>`).join("");
+}
+
+function orderItemText(order) {
+  return order.items.map((item) => `${item.flavour} x ${item.quantity}`).join(", ");
+}
+
+function orderUnits(order) {
+  return order.items.reduce((sum, item) => sum + item.quantity, 0);
+}
+
+function formatDate(value) {
+  return new Intl.DateTimeFormat("en-ZA", {
+    dateStyle: "medium",
+    timeStyle: "short"
+  }).format(new Date(value));
+}
+
+function salesStats() {
+  const activeOrders = state.orders.filter((order) => order.fulfilmentStatus !== "Cancelled");
+  const totalRevenue = activeOrders.reduce((sum, order) => sum + order.total, 0);
+  const unitsSold = activeOrders.reduce((sum, order) => sum + orderUnits(order), 0);
+  const cashTotal = activeOrders.filter((order) => order.paymentMethod === "cash").reduce((sum, order) => sum + order.total, 0);
+  const cardTotal = activeOrders.filter((order) => order.paymentMethod === "card").reduce((sum, order) => sum + order.total, 0);
+  const totalStock = products.reduce((sum, product) => sum + stockFor(product.id), 0);
+  return { activeOrders, totalRevenue, unitsSold, cashTotal, cardTotal, totalStock };
+}
+
+function renderAdmin() {
+  if (!adminConsole || adminConsole.hidden) return;
+  qsa("[data-admin-tab]").forEach((button) => button.classList.toggle("active", button.dataset.adminTab === state.adminTab));
+  const views = {
+    overview: renderAdminOverview,
+    inventory: renderAdminInventory,
+    sales: renderAdminSales,
+    counter: renderAdminCounter,
+    purchases: renderAdminPurchases
+  };
+  adminContent.innerHTML = (views[state.adminTab] || renderAdminOverview)();
+}
+
+function renderAdminOverview() {
+  const stats = salesStats();
+  const lowStock = products.filter((product) => stockFor(product.id) <= 1);
+  const recentOrders = state.orders.slice(0, 4);
+  return `
+    <div class="stat-grid">
+      <article class="stat-card"><span>Stock</span><strong>${stats.totalStock}</strong><p>Units available</p></article>
+      <article class="stat-card"><span>Value</span><strong>${money(stats.totalStock * PRODUCT_PRICE)}</strong><p>Retail stock value</p></article>
+      <article class="stat-card"><span>Sold</span><strong>${stats.unitsSold}</strong><p>Units recorded</p></article>
+      <article class="stat-card"><span>Revenue</span><strong>${money(stats.totalRevenue)}</strong><p>Cash ${money(stats.cashTotal)} / Card ${money(stats.cardTotal)}</p></article>
+    </div>
+    <div class="admin-grid">
+      <section class="admin-panel">
+        <h3>Low stock</h3>
+        <div class="ledger-list">
+          ${lowStock.length ? lowStock.map((product) => `
+            <article class="ledger-row">
+              <div class="ledger-head">
+                <div><span>${product.sku}</span><strong>${product.flavour}</strong></div>
+                <strong>${stockFor(product.id)} left</strong>
+              </div>
+              <p>${product.profile} profile at ${money(PRODUCT_PRICE)} each.</p>
+            </article>
+          `).join("") : `<div class="empty-state">No low stock products.</div>`}
+        </div>
+      </section>
+      <section class="admin-panel">
+        <h3>Recent sales</h3>
+        <div class="ledger-list">
+          ${recentOrders.length ? recentOrders.map((order) => `
+            <article class="ledger-row">
+              <div class="ledger-head">
+                <div><span>${order.source}</span><strong>${order.id}</strong></div>
+                <strong>${money(order.total)}</strong>
+              </div>
+              <p>${orderItemText(order)}. ${order.paymentMethod.toUpperCase()} / ${order.fulfilmentStatus}</p>
+            </article>
+          `).join("") : `<div class="empty-state">No sales recorded yet.</div>`}
+        </div>
+      </section>
+    </div>
+  `;
+}
+
+function renderAdminInventory() {
+  return `
+    <div class="inventory-table">
+      <table>
+        <thead>
+          <tr>
+            <th>Product</th>
+            <th>Stock</th>
+            <th>Sold</th>
+            <th>Retail value</th>
+            <th>Update stock</th>
+          </tr>
+        </thead>
+        <tbody>
+          ${products.map((product) => {
+            const sold = state.orders
+              .filter((order) => order.fulfilmentStatus !== "Cancelled")
+              .flatMap((order) => order.items)
+              .filter((item) => item.id === product.id)
+              .reduce((sum, item) => sum + item.quantity, 0);
+            return `
+              <tr>
+                <td>
+                  <div class="inventory-product">
+                    <img src="${product.image}" alt="${product.flavour} vape" />
+                    <div><strong>${product.flavour}</strong><span>${product.sku} / ${product.profile}</span></div>
+                  </div>
+                </td>
+                <td>${stockFor(product.id)}</td>
+                <td>${sold}</td>
+                <td>${money(stockFor(product.id) * PRODUCT_PRICE)}</td>
+                <td>
+                  <div class="stock-controls">
+                    <input type="number" min="0" data-stock-input="${product.id}" value="${stockFor(product.id)}" aria-label="Stock for ${product.flavour}" />
+                    <button type="button" data-stock-action="decrement" data-stock-id="${product.id}" aria-label="Decrease stock">-</button>
+                    <button type="button" data-stock-action="set" data-stock-id="${product.id}" aria-label="Set stock">OK</button>
+                    <button type="button" data-stock-action="increment" data-stock-id="${product.id}" aria-label="Increase stock">+</button>
+                  </div>
+                </td>
+              </tr>
+            `;
+          }).join("")}
+        </tbody>
+      </table>
+    </div>
+  `;
+}
+
+function renderAdminSales() {
+  return `
+    <div class="order-list">
+      ${state.orders.length ? state.orders.map((order) => `
+        <article class="order-card">
+          <div class="order-head">
+            <div>
+              <span>${order.source} / ${formatDate(order.createdAt)}</span>
+              <strong>${order.id}</strong>
+            </div>
+            <strong>${money(order.total)}</strong>
+          </div>
+          <p>${order.customer.name || "Customer"} ${order.customer.phone ? "/ " + order.customer.phone : ""}</p>
+          <div class="order-items">
+            ${order.items.map((item) => `<span>${item.flavour} x ${item.quantity}</span>`).join("")}
+          </div>
+          <div class="status-row">
+            <label><span>Payment</span>
+              <select data-order-field="paymentStatus" data-order-id="${order.id}">
+                ${["Due on delivery", "Pending card payment", "Paid", "Refunded"].map((status) => `<option value="${status}" ${order.paymentStatus === status ? "selected" : ""}>${status}</option>`).join("")}
+              </select>
+            </label>
+            <label><span>Fulfilment</span>
+              <select data-order-field="fulfilmentStatus" data-order-id="${order.id}">
+                ${["New", "Packed", "Out for delivery", "Fulfilled", "Cancelled"].map((status) => `<option value="${status}" ${order.fulfilmentStatus === status ? "selected" : ""}>${status}</option>`).join("")}
+              </select>
+            </label>
+          </div>
+        </article>
+      `).join("") : `<div class="empty-state">No sales recorded yet.</div>`}
+    </div>
+  `;
+}
+
+function renderAdminCounter() {
+  return `
+    <form class="quick-form" data-counter-form>
+      <h3>Record counter sale</h3>
+      <div class="form-grid">
+        <label><span>Product</span><select name="product_id">${productOptions()}</select></label>
+        <label><span>Quantity</span><input name="quantity" type="number" min="1" value="1" /></label>
+        <label><span>Payment</span>
+          <select name="payment_method">
+            <option value="cash">Cash</option>
+            <option value="card">Card</option>
+          </select>
+        </label>
+        <label><span>Customer note</span><input name="customer_name" type="text" placeholder="Walk-in customer" /></label>
+      </div>
+      <button class="primary-button" type="submit">Record sale</button>
+    </form>
+  `;
+}
+
+function renderAdminPurchases() {
+  return `
+    <div class="admin-grid">
+      <form class="quick-form" data-purchase-form>
+        <h3>Log stock purchase</h3>
+        <div class="form-grid">
+          <label><span>Product</span><select name="product_id">${productOptions()}</select></label>
+          <label><span>Quantity bought</span><input name="quantity" type="number" min="1" value="1" /></label>
+          <label><span>Unit cost</span><input name="unit_cost" type="number" min="0" step="0.01" placeholder="0.00" /></label>
+          <label><span>Paid by</span>
+            <select name="payment_method">
+              <option value="cash">Cash</option>
+              <option value="card">Card</option>
+            </select>
+          </label>
+        </div>
+        <label><span>Supplier or note</span><textarea name="note" rows="3" placeholder="Supplier, invoice, or stock note"></textarea></label>
+        <button class="primary-button" type="submit">Save purchase</button>
+      </form>
+      <section class="admin-panel">
+        <h3>Purchase log</h3>
+        <div class="ledger-list">
+          ${state.purchases.length ? state.purchases.map((purchase) => `
+            <article class="ledger-row">
+              <div class="ledger-head">
+                <div><span>${formatDate(purchase.createdAt)}</span><strong>${purchase.flavour} x ${purchase.quantity}</strong></div>
+                <strong>${money(purchase.totalCost)}</strong>
+              </div>
+              <p>${purchase.paymentMethod.toUpperCase()}${purchase.note ? " / " + purchase.note : ""}</p>
+            </article>
+          `).join("") : `<div class="empty-state">No purchases logged yet.</div>`}
+        </div>
+      </section>
+    </div>
+  `;
+}
+
+function handleCounterSale(event) {
+  event.preventDefault();
+  const form = new FormData(event.target);
+  const product = productById(String(form.get("product_id")));
+  const quantity = Math.max(1, Math.floor(Number(form.get("quantity")) || 1));
+  if (!product) return;
+  if (stockFor(product.id) < quantity) {
+    showToast(`Only ${stockFor(product.id)} ${product.flavour} available`);
+    return;
+  }
+
+  const order = createOrder({
+    source: "Counter sale",
+    customer: {
+      name: String(form.get("customer_name") || "Walk-in customer").trim() || "Walk-in customer",
+      phone: "",
+      email: ""
+    },
+    deliveryMethod: "collection",
+    address: "Counter sale",
+    paymentMethod: String(form.get("payment_method") || "cash"),
+    delivery: 0,
+    items: [{
+      id: product.id,
+      sku: product.sku,
+      flavour: product.flavour,
+      unitPrice: PRODUCT_PRICE,
+      quantity
+    }]
+  });
+  order.paymentStatus = "Paid";
+
+  state.orders.unshift(order);
+  decrementStock(order.items);
+  saveOrders();
+  saveStock();
+  event.target.reset();
+  renderAll();
+  showToast("Counter sale recorded");
+}
+
+function handlePurchase(event) {
+  event.preventDefault();
+  const form = new FormData(event.target);
+  const product = productById(String(form.get("product_id")));
+  const quantity = Math.max(1, Math.floor(Number(form.get("quantity")) || 1));
+  const unitCost = Math.max(0, Number(form.get("unit_cost")) || 0);
+  if (!product) return;
+
+  const purchase = {
+    id: `PO-${Date.now().toString(36).toUpperCase()}`,
+    createdAt: new Date().toISOString(),
+    productId: product.id,
+    flavour: product.flavour,
+    quantity,
+    unitCost,
+    totalCost: quantity * unitCost,
+    paymentMethod: String(form.get("payment_method") || "cash"),
+    note: String(form.get("note") || "").trim()
+  };
+
+  state.purchases.unshift(purchase);
+  setStock(product.id, stockFor(product.id) + quantity);
+  savePurchases();
+  event.target.reset();
+  renderAll();
+  showToast("Stock purchase logged");
+}
+
+function unlockAdmin() {
+  sessionStorage.setItem(storageKeys.admin, "yes");
+  adminGate.hidden = true;
+  adminConsole.hidden = false;
+  renderAdmin();
+}
+
+function lockAdmin() {
+  sessionStorage.removeItem(storageKeys.admin);
+  adminGate.hidden = false;
+  adminConsole.hidden = true;
+  qs("[data-admin-error]").textContent = "";
+}
+
+function openOwnerConsole() {
+  ownerModal.classList.add("open");
+  ownerModal.setAttribute("aria-hidden", "false");
+  if (sessionStorage.getItem(storageKeys.admin) === "yes") {
+    unlockAdmin();
+  } else {
+    lockAdmin();
+    window.setTimeout(() => adminGate.querySelector("input")?.focus(), 80);
+  }
+  updateBodyLock();
+}
+
+function closeOwnerConsole() {
+  ownerModal.classList.remove("open");
+  ownerModal.setAttribute("aria-hidden", "true");
+  updateBodyLock();
+}
+
+function shouldOpenOwnerConsole() {
+  const params = new URLSearchParams(window.location.search);
+  return params.get("owner") === "1" || window.location.hash === "#owner" || window.location.hash === "#internal";
+}
+
+function openOwnerConsoleFromRoute() {
+  if (shouldOpenOwnerConsole()) openOwnerConsole();
+}
+
+function toggleMenu() {
+  const isOpen = siteHeader.classList.toggle("menu-open");
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.setAttribute("aria-label", isOpen ? "Close menu" : "Open menu");
 }
 
 function closeMenu() {
@@ -225,35 +811,23 @@ function closeMenu() {
   menuButton.setAttribute("aria-label", "Open menu");
 }
 
-function toggleMenu() {
-  if (siteHeader.classList.contains("menu-open")) {
-    closeMenu();
-  } else {
-    openMenu();
-  }
-}
-
 function updateHeroScroll() {
   const y = Math.min(window.scrollY, 720);
-  document.documentElement.style.setProperty("--scroll", y);
-  document.querySelector(".hero-product-one").style.transform = `translateY(${y * 0.045}px) rotate(${y * -0.012}deg)`;
-  document.querySelector(".hero-product-two").style.transform = `translateY(${y * -0.035}px) rotate(${y * 0.01}deg)`;
-  document.querySelector(".hero-product-three").style.transform = `translateY(${y * 0.025}px) rotate(${y * 0.014}deg)`;
-  document.querySelector(".orbit-ring").style.transform = `rotate(${-18 + y * 0.035}deg) scale(${1 + y * 0.00018})`;
+  const heroOne = qs(".hero-product-one");
+  const heroTwo = qs(".hero-product-two");
+  const heroThree = qs(".hero-product-three");
+  const heroFour = qs(".hero-product-four");
+  if (heroOne) heroOne.style.transform = `translateY(${y * 0.03}px) rotate(${-8 - y * 0.006}deg)`;
+  if (heroTwo) heroTwo.style.transform = `translateY(${y * -0.02}px) rotate(${9 + y * 0.005}deg)`;
+  if (heroThree) heroThree.style.transform = `translateY(${y * 0.025}px) rotate(${4 + y * 0.006}deg)`;
+  if (heroFour) heroFour.style.transform = `translateY(${y * -0.015}px) rotate(${-10 - y * 0.004}deg)`;
 }
 
-let revealObserver;
-function observeReveals() {
-  if (revealObserver) revealObserver.disconnect();
-  revealObserver = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) entry.target.classList.add("visible");
-    });
-  }, { threshold: 0.14 });
-  document.querySelectorAll(".reveal, .editorial-strip article, .collection-card, .drop-card, .feature-story, .flavour-grid article, .service-band article, .reviews-band article, .faq-news > *").forEach((item) => {
-    item.classList.add("reveal");
-    revealObserver.observe(item);
-  });
+function initAgeGate() {
+  if (localStorage.getItem(storageKeys.age) === "yes") return;
+  ageModal.classList.add("open");
+  ageModal.setAttribute("aria-hidden", "false");
+  document.body.classList.add("age-locked");
 }
 
 document.addEventListener("click", (event) => {
@@ -261,105 +835,110 @@ document.addEventListener("click", (event) => {
   const inc = event.target.closest("[data-inc]");
   const dec = event.target.closest("[data-dec]");
   const remove = event.target.closest("[data-remove]");
+  const adminTab = event.target.closest("[data-admin-tab]");
+  const stockButton = event.target.closest("[data-stock-action]");
 
   if (add) addToCart(add.dataset.add, add);
+
   if (inc) {
-    state.cart[inc.dataset.inc] += 1;
-    saveCart();
-    renderCart();
+    const id = inc.dataset.inc;
+    if (Number(state.cart[id] || 0) < stockFor(id)) {
+      state.cart[id] = Number(state.cart[id] || 0) + 1;
+      saveCart();
+      renderAll();
+    }
   }
+
   if (dec) {
-    state.cart[dec.dataset.dec] -= 1;
-    if (state.cart[dec.dataset.dec] <= 0) delete state.cart[dec.dataset.dec];
+    const id = dec.dataset.dec;
+    state.cart[id] = Number(state.cart[id] || 0) - 1;
+    if (state.cart[id] <= 0) delete state.cart[id];
     saveCart();
-    renderCart();
+    renderAll();
   }
+
   if (remove) {
     delete state.cart[remove.dataset.remove];
     saveCart();
-    renderCart();
+    renderAll();
+  }
+
+  if (adminTab) {
+    state.adminTab = adminTab.dataset.adminTab;
+    renderAdmin();
+  }
+
+  if (stockButton) {
+    const id = stockButton.dataset.stockId;
+    const input = qs(`[data-stock-input="${id}"]`);
+    if (stockButton.dataset.stockAction === "increment") setStock(id, stockFor(id) + 1);
+    if (stockButton.dataset.stockAction === "decrement") setStock(id, stockFor(id) - 1);
+    if (stockButton.dataset.stockAction === "set") setStock(id, input?.value);
+    renderAll();
+    showToast("Stock updated");
   }
 });
 
-document.querySelectorAll("[data-filter]").forEach((button) => {
+qsa("[data-filter]").forEach((button) => {
   button.addEventListener("click", () => {
     state.filter = button.dataset.filter;
-    document.querySelectorAll("[data-filter]").forEach((item) => item.classList.toggle("active", item === button));
+    qsa("[data-filter]").forEach((item) => item.classList.toggle("active", item === button));
     renderProducts();
   });
 });
 
-document.querySelector("[data-sort]").addEventListener("change", (event) => {
+qs("[data-sort]").addEventListener("change", (event) => {
   state.sort = event.target.value;
   renderProducts();
 });
 
-document.querySelector("[data-search]").addEventListener("input", (event) => {
+qs("[data-search]").addEventListener("input", (event) => {
   state.query = event.target.value;
   renderProducts();
 });
 
-cartButton.addEventListener("click", openCart);
-document.querySelector("[data-close-cart]").addEventListener("click", closeCart);
-document.querySelector("[data-open-checkout]").addEventListener("click", openCheckout);
-document.querySelector("[data-close-checkout]").addEventListener("click", closeCheckout);
-document.querySelector("[data-checkout-form]").addEventListener("submit", async (event) => {
+cartButtons.forEach((button) => button.addEventListener("click", openCart));
+qs("[data-close-cart]").addEventListener("click", closeCart);
+qs("[data-open-checkout]").addEventListener("click", openCheckout);
+qs("[data-close-checkout]").addEventListener("click", closeCheckout);
+qs("[data-close-success]").addEventListener("click", closeCheckout);
+qs("[data-close-admin]").addEventListener("click", closeOwnerConsole);
+qs("[data-delivery-method]").addEventListener("change", renderCheckout);
+checkoutForm.addEventListener("submit", handleCheckoutSubmit);
+
+adminGate.addEventListener("submit", (event) => {
   event.preventDefault();
-  const form = event.target;
-
-  const order = {
-    customer: {
-      email: form.email.value,
-      phone: form.phone.value,
-      first_name: form.first_name.value,
-      last_name: form.last_name.value,
-      address: form.address.value,
-      city: form.city.value,
-      postal_code: form.postal_code.value
-    },
-    items: cartEntries().map(({ product, quantity }) => ({ id: product.id, name: product.name, unit_price: product.price, quantity })),
-    subtotal: cartEntries().reduce((s, e) => s + e.product.price * e.quantity, 0)
-  };
-
-  try {
-    const resp = await fetch('/api/create-stitch-session', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(order)
-    });
-
-    const json = await resp.json();
-    if (resp.ok) {
-      // Stitch (or the provider) commonly responds with a redirect URL or hosted payment id.
-      // If a redirect URL is provided, navigate there. Otherwise show a confirmation.
-      const redirectUrl = json.redirect_url || json.url || json.payment_url || (json.data && json.data.redirect_url);
-      if (redirectUrl) {
-        window.location = redirectUrl;
-        return;
-      }
-      showToast('Payment session created — complete in provider UI');
-      closeCheckout();
-      state.cart = {};
-      saveCart();
-      renderCart();
-      return;
-    }
-
-    console.error('Payment init failed', json);
-    showToast('Payment initiation failed');
-  } catch (err) {
-    console.error(err);
-    showToast('Payment request error');
+  const pin = new FormData(adminGate).get("pin");
+  if (pin === STAFF_PIN) {
+    qs("[data-admin-error]").textContent = "";
+    adminGate.reset();
+    unlockAdmin();
+  } else {
+    qs("[data-admin-error]").textContent = "Incorrect PIN.";
   }
 });
-document.querySelector("[data-open-account]").addEventListener("click", () => alert("Account sign-in opens when customer accounts are enabled."));
-document.querySelector(".newsletter").addEventListener("submit", (event) => {
-  event.preventDefault();
-  showToast("You're on the list");
+
+qs("[data-admin-lock]").addEventListener("click", lockAdmin);
+
+document.addEventListener("submit", (event) => {
+  if (event.target.matches("[data-counter-form]")) handleCounterSale(event);
+  if (event.target.matches("[data-purchase-form]")) handlePurchase(event);
 });
+
+document.addEventListener("change", (event) => {
+  const orderField = event.target.closest("[data-order-field]");
+  if (!orderField) return;
+  const order = state.orders.find((item) => item.id === orderField.dataset.orderId);
+  if (!order) return;
+  order[orderField.dataset.orderField] = orderField.value;
+  saveOrders();
+  renderAdmin();
+  showToast("Order updated");
+});
+
 menuButton.addEventListener("click", toggleMenu);
 primaryNav.addEventListener("click", (event) => {
-  if (event.target.closest("a")) closeMenu();
+  if (event.target.closest("a, button")) closeMenu();
 });
 cartDrawer.addEventListener("click", (event) => {
   if (event.target === cartDrawer) closeCart();
@@ -367,18 +946,40 @@ cartDrawer.addEventListener("click", (event) => {
 checkoutModal.addEventListener("click", (event) => {
   if (event.target === checkoutModal) closeCheckout();
 });
+ownerModal.addEventListener("click", (event) => {
+  if (event.target === ownerModal) closeOwnerConsole();
+});
 window.addEventListener("keydown", (event) => {
+  if (event.ctrlKey && event.shiftKey && event.key.toLowerCase() === "o") {
+    event.preventDefault();
+    openOwnerConsole();
+    return;
+  }
   if (event.key === "Escape") {
     closeCart();
     closeCheckout();
+    closeOwnerConsole();
     closeMenu();
   }
 });
 window.addEventListener("resize", () => {
-  if (window.innerWidth > 700) closeMenu();
+  if (window.innerWidth > 760) closeMenu();
 });
 window.addEventListener("scroll", updateHeroScroll, { passive: true });
+window.addEventListener("hashchange", openOwnerConsoleFromRoute);
 
-renderProducts();
-renderCart();
+qs("[data-confirm-age]").addEventListener("click", () => {
+  localStorage.setItem(storageKeys.age, "yes");
+  ageModal.classList.remove("open");
+  ageModal.setAttribute("aria-hidden", "true");
+  document.body.classList.remove("age-locked");
+});
+
+if (sessionStorage.getItem(storageKeys.admin) === "yes") {
+  unlockAdmin();
+}
+
+renderAll();
 updateHeroScroll();
+initAgeGate();
+openOwnerConsoleFromRoute();
