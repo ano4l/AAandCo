@@ -825,8 +825,10 @@ document.addEventListener("click", (event) => {
   const remove = event.target.closest("[data-remove]");
   const adminTab = event.target.closest("[data-admin-tab]");
   const stockButton = event.target.closest("[data-stock-action]");
+  const ownerOpen = event.target.closest("[data-open-owner]");
 
   if (add) addToCart(add.dataset.add, add);
+  if (ownerOpen) openOwnerConsole();
 
   if (inc) {
     const id = inc.dataset.inc;

@@ -67,35 +67,66 @@
             </dl>
           </div>
 
-          <div class="hero-showcase" aria-label="Featured vape flavours">
-            <article class="hero-card hero-card-large">
-              <img src="Vape Images/BlueRazz.png" alt="Blue Razz vape" />
-              <div>
-                <span>Fresh stock</span>
-                <strong>Blue Razz</strong>
+          <div class="hero-stage" aria-label="Delivery order preview">
+            <div class="hero-map-card">
+              <div class="map-header">
+                <span>Live order path</span>
+                <strong>AA-CO</strong>
+              </div>
+              <div class="route-visual" aria-hidden="true">
+                <span class="route-pin route-pin-start"></span>
+                <span class="route-track"></span>
+                <span class="route-pin route-pin-end"></span>
+              </div>
+              <div class="route-steps">
+                <span>Flavour</span>
+                <span>Pack</span>
+                <span>Deliver</span>
+              </div>
+            </div>
+
+            <article class="hero-order-card">
+              <div class="order-card-top">
+                <span>Fresh picks</span>
+                <strong>Ready cart</strong>
+              </div>
+              <div class="order-stack">
+                <div class="order-product">
+                  <img src="Vape Images/BlueRazz.png" alt="Blue Razz vape" />
+                  <div>
+                    <span>Blue Razz</span>
+                    <strong>3 in stock</strong>
+                  </div>
+                </div>
+                <div class="order-product">
+                  <img src="Vape Images/CaliforniaCherry.png" alt="California Cherry vape" />
+                  <div>
+                    <span>California Cherry</span>
+                    <strong>3 in stock</strong>
+                  </div>
+                </div>
+                <div class="order-product">
+                  <img src="Vape Images/MiamiMint.png" alt="Miami Mint vape" />
+                  <div>
+                    <span>Miami Mint</span>
+                    <strong>3 in stock</strong>
+                  </div>
+                </div>
               </div>
             </article>
-            <article class="hero-card hero-card-wide">
-              <img src="Vape Images/CaliforniaCherry.png" alt="California Cherry vape" />
-              <div>
-                <span>Popular</span>
-                <strong>California Cherry</strong>
-              </div>
-            </article>
-            <article class="hero-card hero-card-small">
-              <img src="Vape Images/MiamiMint.png" alt="Miami Mint vape" />
-              <div>
-                <span>Cool profile</span>
-                <strong>Miami Mint</strong>
-              </div>
-            </article>
-            <article class="hero-card hero-card-small accent-card">
+
+            <article class="hero-cart-preview">
               <img src="Vape Images/DragonStrawnana.png" alt="Dragon Strawnana vape" />
               <div>
                 <span>Limited</span>
                 <strong>Dragon Strawnana</strong>
               </div>
             </article>
+
+            <div class="hero-delivery-card">
+              <span>Delivery Only</span>
+              <strong>Cash or card</strong>
+            </div>
           </div>
         </div>
       </section>
@@ -240,6 +271,7 @@
         <a href="#catalog">Catalog</a>
         <a href="#checkout-preview">Checkout</a>
         <a href="#top">Back to top</a>
+        <button type="button" data-open-owner>Head Office</button>
       </nav>
     </footer>
 
